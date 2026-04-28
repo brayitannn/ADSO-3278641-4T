@@ -61,7 +61,7 @@ export const usersService = {
     },
     
     // PUT /api/users/:id
-    update(id: Number, payload: UserPayLoad) {
+    update(id: number, payload: UserPayLoad) {
         return request<User>(`${USERS_API_URL}/${id}`,{
             method: "PUT",
             body: JSON.stringify(payload),
@@ -69,10 +69,9 @@ export const usersService = {
     },
 
     // DELETE /api/users/:id
-    delete(id: Number, payload: UserPayLoad) {
+    delete(id: number) {
         return request<User>(`${USERS_API_URL}/${id}`,{
-            method: "PUT",
-            body: JSON.stringify(payload),
+            method: "DELETE",
         });
     },
 }

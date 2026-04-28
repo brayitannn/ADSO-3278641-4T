@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getApiErrorMessage } from "@/lib/api";
 import { usersService } from "@/services/users.service";
-import type { User, UserPayload } from "@/types/user";
+import type { User, UserPayLoad } from "@/types/user";
 
 type SaveResult = {
   ok: boolean;
@@ -53,7 +53,7 @@ export function useUsers() {
   }, [loadUsers]);
 
   // Si hay usuario seleccionado se actualiza; si no, se crea uno nuevo.
-  async function saveUser(payload: UserPayload): Promise<SaveResult> {
+  async function saveUser(payload: UserPayLoad): Promise<SaveResult> {
     setIsSaving(true);
     setError(null);
     setNotice(null);
@@ -80,7 +80,7 @@ export function useUsers() {
       setNotice(
         selectedUser ? "Usuario actualizado." : "Usuario creado correctamente.",
       );
-      
+
       return { ok: true, message: "Guardado correctamente." };
     } catch (caughtError) {
       const message = getApiErrorMessage(caughtError);
@@ -107,11 +107,11 @@ export function useUsers() {
     try {
       await usersService.delete(id);
       setUsers((currentUsers) => currentUsers.filter((user) => user.id !== id));
-      
+
       if (selectedUser?.id === id) {
         setSelectedUser(null);
       }
-      
+
       setNotice("Usuario eliminado.");
     } catch (caughtError) {
       setError(getApiErrorMessage(caughtError));
