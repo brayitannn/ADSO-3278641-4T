@@ -1,4 +1,5 @@
 __pycache__/
 node_modules/
 .env
-mi-app-user-with-next-js/
+mi-api-fastapi-python/
+mi-api-rest-node-js/
